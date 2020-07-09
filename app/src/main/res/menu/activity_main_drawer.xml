@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/data_info"
+            android:title="Data Profil"/>
+        <item
+            android:id="@+id/nav_tentang_kab"
+            android:title="Data Kab.Pekalongan" />
+        <item
+            android:id="@+id/nav_galeri"
+            android:title="@string/menu_gallery" />
+    </group>
+    <item android:title="tentang">
+        <menu>
+            <item
+                android:id="@+id/nav_aplikasi"
+                android:title="tentang aplikasi" />
+            <item
+                android:id="@+id/nav_panduan"
+                android:title="panduan aplikasi" />
+        </menu>
+    </item>
+</menu>
+

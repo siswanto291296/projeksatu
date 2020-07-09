@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Panduan">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="15dp"
+        android:background="@color/colorlogo">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorputih"
+            android:text="Panduan"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/cardview"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-2dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/logo_bpbd1" />
+
+        <TextView
+            android:id="@+id/p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:gravity="center"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:text="Aplikasi BPBD Kabupaten Pekalongan menampilkan berita / informasi terkini tentang bencana khususnya Tanah Longsor."
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/p2"
+            android:layout_below="@+id/p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:paddingLeft="19dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:textSize="16dp"
+            android:text="Untuk melihat informasi seputar berita, kegiatan, dan lain-lain dari BPBD Kabupaten Pekalongan, bisa dengan : \n
+            Memilih pada menu Berita dan Informasi terkait tanah longsor akan ditampilkan"
+            />
+        <TextView
+            android:id="@+id/p3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/p2"
+            android:text="Semoga dengan adanya aplikasi ini, masyarakat dapat mengetahui informasi terkini mengenai daerah rawan kejadian atau bencana terkait tanah longsor maupun informasi dari BPBD Kabupaten Pekalongan."
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:gravity="center"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:textSize="16dp"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tugas.akhirtugas.TentangAplikasi">
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:paddingBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="15dp"
+        android:background="@color/colorlogo">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorputih"
+            android:text="Tentang"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/cardview"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-2dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/logo_bpbd1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="0dp"
+            android:gravity="top"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp"
+            android:text="Aplikasi BPBD Kabupaten Pekalongan merupakan aplikasi yang dibuat guna mempermudah masyarakat Kabupaten Pekalongan khususnya untuk mengetahui berita terkini tentang bencana longsor di Kabupaten Pekalongan secara cepat, tepat, dan akurat. \n \nDiharapkan dengan adanya aplikasi ini warga Kabupaten Pekalongan dapat secara langsung memperloah berita/informasi tentang kebencanaan khususnya longsor secara langsung dari lembaga yang berwenang. \n \nSemoga aplikasi ini mampu memberikan manfaat serta pelayanan secara maksimal kepada masyarakat sehingga dapat memenuhi standar pelayanan di Lembaga BPBD Kabupaten Pekalongan.
+"
+            android:textSize="17dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
