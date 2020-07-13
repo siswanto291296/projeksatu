@@ -1,225 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataLongsor.DataLongsor"
-    android:padding="8dp">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".DataLongsor.DataLongsor">
 
-    <androidx.cardview.widget.CardView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tolbar"
+        app:title="Menu Data Longsor"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Bojong"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Buaran"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Doro"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Kajen"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Kandangserang"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Karanganyar"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Kedungwuni"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Kesesi"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Lebakbarang"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Paninggarang"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Petung"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Sragi"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Talun"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Tirto"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Wiradesa"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Kecamatan Wonopringgo"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@color/colorAccent"/>
-    </androidx.cardview.widget.CardView>
+        android:layout_height="wrap_content"
+        android:background="@color/colorlogo"/>
+    <RelativeLayout
 
-</LinearLayout>
+        android:layout_marginTop="60dp"
+        android:background="#0B0B0B"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Bojong"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Buaran"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Doro"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Kajen"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Kandang Serang"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Kecamatan Karanganyar"
+                android:textAlignment="center"/>
+        </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Kedungwuni"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Kesesi"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Lebakbarang"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Paninggaran"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Petung"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Sragi"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Talun"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Tirto"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Wiradesa"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kecamatan Wonopringgo"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

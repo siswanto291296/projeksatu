@@ -9,43 +9,17 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:paddingBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:paddingTop="15dp"
-        android:background="@color/colorlogo">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="0dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorputih"
-            android:text="Profil"
-            android:textStyle="bold" />
+        android:background="@color/colorlogo"
+        app:title="Profil BPBD">
 
     </androidx.appcompat.widget.Toolbar>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-2dp"
-            android:paddingTop="15dp"
-            android:src="@drawable/logo_bpbd1" />
-    </RelativeLayout>
     <androidx.viewpager.widget.ViewPager
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewpager_id"
-        android:layout_marginTop="200dp">
+        android:id="@+id/viewpager_id">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout_id"

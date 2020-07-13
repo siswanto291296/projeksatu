@@ -1,56 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".kontak.KontakChat">
+    tools:context=".kontak.KontakChat"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="Badan Penanggulangan Bencana Daerah"
-        android:maxHeight="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo_bpbd1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Kontak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="125dp"
-        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/logo_bpbd1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Kontak"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile"
-        android:gravity="center_horizontal" />
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="325dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:padding="8dp">
 
     <LinearLayout
         android:layout_marginTop="40dp"
@@ -173,4 +149,4 @@
 
         </LinearLayout>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

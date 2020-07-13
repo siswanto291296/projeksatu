@@ -1,9 +1,11 @@
 package com.tugas.akhirtugas.Galeri;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.tugas.akhirtugas.Adapter.RecyclerViewAdapter;
@@ -16,6 +18,8 @@ public class GaleriActivity extends AppCompatActivity {
 
     List<Galeri> lstBook ;
 
+    Toolbar toolbar;
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,20 @@ public class GaleriActivity extends AppCompatActivity {
         myrv.setLayoutManager(new GridLayoutManager(this,3));
         myrv.setAdapter(myAdapter);
 
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }
