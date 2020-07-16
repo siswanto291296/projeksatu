@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
+    tools:context=".menu.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <RelativeLayout
@@ -67,7 +67,6 @@
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
                                         android:layout_centerInParent="true"
-                                        android:onClick="berita"
                                         android:src="@drawable/berita" />
 
                                     <TextView
@@ -155,7 +154,6 @@
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
                                         android:layout_centerInParent="true"
-                                        android:onClick="data_longsor"
                                         android:src="@drawable/statistik" />
 
                                     <TextView
@@ -189,8 +187,7 @@
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:onClick="info">
+                                    android:layout_height="match_parent">
 
                                     <ImageView
                                         android:id="@+id/keluar"

@@ -7,4 +7,39 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorlogo">#e67817</color>
     <color name="colorputih">#FFFFFF</color>
+
+    <color name="primaryLight">#FFCDD2</color>
+    <color name="accent">#448AFF</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="backgroundcolor">#fcfcfc</color>
+    <color name="lightgray">#ededed</color>
+    <color name="deeppurple">#7c4dff</color>
+    <color name="yello">#ffb300</color>
+    <color name="green">#00bfa5</color>
+    <color name="darkblue">#23283a</color>
+    <color name="testcolorblue">#152b38</color>
+    <color name="pink">#fe104d</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="black">#66000000</color>
+
+    <color name="colorGreen">#78ca28</color>
+    <color name="selected_product_count">#4d4d4d</color>
+    <color name="list_product_name">#121212</color>
+    <color name="list_products_price">#4d4d4d</color>
+    <color name="gradient_2">#3e3e3e</color>
+    <color name="bg_separator">#DA707070</color>
+    <color name="border_remove_item">#fc9898</color>
+    <color name="btn_remove_item">#fc2222</color>
+    <color name="red_dull">#FC5A5A</color>
+    <color name="bg_input_form">#FFEB6E</color>
+    <color name="hint_label">#4E4E4E</color>
+    <color name="grey">#5b5b5b</color>
+    <color name="lbl_secondary">#8d8d8d</color>
+    <color name="profile_default_tint">#e0e0e0</color>
+    <color name="white">#FFFFFF</color>
 </resources>

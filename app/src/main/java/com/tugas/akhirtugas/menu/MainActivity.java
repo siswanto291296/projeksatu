@@ -1,4 +1,4 @@
-package com.tugas.akhirtugas;
+package com.tugas.akhirtugas.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,7 @@ import com.tugas.akhirtugas.BPBD.BpbdActivity;
 import com.tugas.akhirtugas.Berita.BeritaActivity;
 import com.tugas.akhirtugas.DataLongsor.DataLongsor;
 import com.tugas.akhirtugas.Galeri.GaleriActivity;
+import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.kontak.KontakChat;
 
 import butterknife.BindView;

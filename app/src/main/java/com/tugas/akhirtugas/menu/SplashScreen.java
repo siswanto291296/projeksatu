@@ -1,4 +1,4 @@
-package com.tugas.akhirtugas;
+package com.tugas.akhirtugas.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.tugas.akhirtugas.R;
 
 public class SplashScreen extends AppCompatActivity {
 

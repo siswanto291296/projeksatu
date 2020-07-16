@@ -1,36 +1,52 @@
 package com.tugas.akhirtugas.DataLongsor;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tugas.akhirtugas.R;
 
-public class DataLongsor extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    Toolbar toolbar;
-    @SuppressLint("RestrictedApi")
+public class DataLongsor extends AppCompatActivity {
+    @BindView(R.id.loading)
+    ProgressBar loading;
+    @BindView(R.id.rv_berita)
+    RecyclerView rvBerita;
+    @BindView(R.id.swlayout)
+    SwipeRefreshLayout swlayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_longsor);
-        toolbar=findViewById(R.id.tolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
+        getSupportActionBar().setTitle("Data Longsor");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
     }
 
     @Override
-    public void onBackPressed() {
-        finish();
-        super.onBackPressed();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

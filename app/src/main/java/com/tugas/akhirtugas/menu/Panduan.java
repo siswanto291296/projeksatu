@@ -1,4 +1,4 @@
-package com.tugas.akhirtugas;
+package com.tugas.akhirtugas.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,20 +6,22 @@ import androidx.appcompat.widget.Toolbar;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-public class TentangAplikasi extends AppCompatActivity {
+import com.tugas.akhirtugas.R;
+
+public class Panduan extends AppCompatActivity {
 
     Toolbar toolbar;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tentang_aplikasi);
+        setContentView(R.layout.activity_panduan);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-    }
 
+    }
     @Override
     public void onBackPressed() {
         finish();
@@ -32,4 +34,3 @@ public class TentangAplikasi extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 }
-
