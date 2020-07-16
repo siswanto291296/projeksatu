@@ -9,9 +9,6 @@
             android:id="@+id/data_info"
             android:title="Data Profil"/>
         <item
-            android:id="@+id/nav_tentang_kab"
-            android:title="Data Kab.Pekalongan" />
-        <item
             android:id="@+id/nav_galeri"
             android:title="@string/menu_gallery" />
     </group>

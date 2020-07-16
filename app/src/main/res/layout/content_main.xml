@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:background="#EEEEEE">
 
             <LinearLayout
@@ -34,92 +33,92 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="50dp"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp">
+                        android:layout_marginTop="50dp"
+                        android:layout_marginRight="5dp"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="170dp"
-                            android:orientation="horizontal"
-                            >
+                            android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/berita"
                                 android:layout_width="0dp"
                                 android:layout_height="160dp"
-                                android:id="@+id/btn1"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:clickable="true"
-                                app:cardElevation="4dp"
-                                app:cardCornerRadius="4dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_marginRight="5dp"
                                 android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <ImageView
+                                        android:id="@+id/tokoh"
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
-                                        android:id="@+id/tokoh"
-                                        android:src="@drawable/berita"
                                         android:layout_centerInParent="true"
-                                        android:onClick="berita"/>
+                                        android:onClick="berita"
+                                        android:src="@drawable/berita" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Kab.Pekalongan"
-                                        android:textSize="16sp"
                                         android:layout_below="@+id/tokoh"
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="5dp"
-                                        android:layout_marginBottom="10dp"/>
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Kab.Pekalongan"
+                                        android:textSize="16sp" />
 
                                 </RelativeLayout>
 
                             </androidx.cardview.widget.CardView>
+
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/cuaca"
                                 android:layout_width="0dp"
                                 android:layout_height="160dp"
-                                android:id="@+id/btn2"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:clickable="true"
-                                app:cardElevation="4dp"
-                                app:cardCornerRadius="4dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <ImageView
+                                        android:id="@+id/cerita"
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
-                                        android:id="@+id/cerita"
-                                        android:src="@drawable/cuaca"
-                                        android:layout_centerInParent="true" />
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/cuaca" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Info Cuaca"
-                                        android:textSize="16sp"
                                         android:layout_below="@+id/cerita"
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="5dp"
-                                        android:layout_marginBottom="10dp"/>
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Info Cuaca"
+                                        android:textSize="16sp" />
 
                                 </RelativeLayout>
 
@@ -133,59 +132,60 @@
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/data_longsor"
                                 android:layout_width="0dp"
                                 android:layout_height="160dp"
-                                android:id="@+id/btn3"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:clickable="true"
-                                app:cardElevation="4dp"
-                                app:cardCornerRadius="4dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_marginRight="5dp"
                                 android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <ImageView
+                                        android:id="@+id/soal"
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
-                                        android:id="@+id/soal"
-                                        android:src="@drawable/statistik"
                                         android:layout_centerInParent="true"
-                                        android:onClick="data_longsor"/>
+                                        android:onClick="data_longsor"
+                                        android:src="@drawable/statistik" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Data Longsor"
-                                        android:textSize="16sp"
                                         android:layout_below="@+id/soal"
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="5dp"
-                                        android:layout_marginBottom="10dp"/>
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Data Longsor"
+                                        android:textSize="16sp" />
 
                                 </RelativeLayout>
 
                             </androidx.cardview.widget.CardView>
+
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/info"
                                 android:layout_width="0dp"
                                 android:layout_height="160dp"
-                                android:id="@+id/btn4"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:clickable="true"
-                                app:cardElevation="4dp"
-                                app:cardCornerRadius="4dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="vertical">
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:cardCornerRadius="4dp"
+                                app:cardElevation="4dp">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
@@ -193,21 +193,21 @@
                                     android:onClick="info">
 
                                     <ImageView
+                                        android:id="@+id/keluar"
                                         android:layout_width="80dp"
                                         android:layout_height="80dp"
-                                        android:id="@+id/keluar"
-                                        android:src="@drawable/info_aktual"
-                                        android:layout_centerInParent="true" />
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/info_aktual" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Info"
-                                        android:textSize="16sp"
                                         android:layout_below="@+id/keluar"
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="5dp"
-                                        android:layout_marginBottom="10dp"/>
+                                        android:layout_marginBottom="10dp"
+                                        android:text="Info"
+                                        android:textSize="16sp" />
 
                                 </RelativeLayout>
 
