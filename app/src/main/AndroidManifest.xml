@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tugas.akhirtugas">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -12,14 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Berita.detail.DetailBerita"
-            android:label="@string/title_activity_detail_berita"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Berita.BeritaActivity"
-            android:theme="@style/ShowActionBar" />
-        <activity android:name=".kontak.MapsActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,6 +30,21 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".DataLongsor.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity
+            android:name=".DataLongsor.detail.DetailLongsor"
+            android:label="@string/title_activity_detail_longsor"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Berita.detail.DetailBerita"
+            android:label="@string/title_activity_detail_berita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Berita.BeritaActivity"
+            android:theme="@style/ShowActionBar" />
+        <activity android:name=".kontak.MapsActivity" />
         <activity
             android:name=".kontak.KontakChat"
             android:theme="@style/NoTitlle" />

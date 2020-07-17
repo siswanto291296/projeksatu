@@ -2,6 +2,7 @@ package com.tugas.akhirtugas.network;
 
 
 import com.tugas.akhirtugas.model.berita.ResponseBerita;
+import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,6 +10,9 @@ import retrofit2.http.GET;
 public interface ApiService {
     @GET("read/Berita.php")
     Call<ResponseBerita> getBerita();
+
+    @GET("read/DataLongsor.php")
+    Call<ResponseLongsor> getDataLongsor();
    /*
     @FormUrlEncoded
     @POST("read/LoginUser.php")

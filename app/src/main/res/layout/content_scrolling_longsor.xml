@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_detail_longsor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/v_16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_jenis_bencana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="jenis bencana"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tgl_waktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="tanggal dan waktu" />
+
+        <TextView
+            android:id="@+id/txt_lokasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lokasi" />
+
+        <TextView
+            android:id="@+id/txt_korban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="korban" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="@dimen/v_16dp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,8 +1,11 @@
 package com.tugas.akhirtugas.model.longsor;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class DataLongsorItem{
+public class DataLongsorItem implements Parcelable {
 
 	@SerializedName("lokasi")
 	private String lokasi;
@@ -91,4 +94,47 @@ public class DataLongsorItem{
 	public String getLongitude(){
 		return longitude;
 	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.lokasi);
+		dest.writeString(this.latitude);
+		dest.writeString(this.waktu);
+		dest.writeString(this.korban);
+		dest.writeString(this.idBencana);
+		dest.writeString(this.jenisBencana);
+		dest.writeString(this.tanggal);
+		dest.writeString(this.longitude);
+	}
+
+	public DataLongsorItem() {
+	}
+
+	protected DataLongsorItem(Parcel in) {
+		this.lokasi = in.readString();
+		this.latitude = in.readString();
+		this.waktu = in.readString();
+		this.korban = in.readString();
+		this.idBencana = in.readString();
+		this.jenisBencana = in.readString();
+		this.tanggal = in.readString();
+		this.longitude = in.readString();
+	}
+
+	public static final Parcelable.Creator<DataLongsorItem> CREATOR = new Parcelable.Creator<DataLongsorItem>() {
+		@Override
+		public DataLongsorItem createFromParcel(Parcel source) {
+			return new DataLongsorItem(source);
+		}
+
+		@Override
+		public DataLongsorItem[] newArray(int size) {
+			return new DataLongsorItem[size];
+		}
+	};
 }
