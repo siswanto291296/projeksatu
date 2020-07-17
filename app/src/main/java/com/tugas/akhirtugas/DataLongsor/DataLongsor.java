@@ -1,6 +1,8 @@
 package com.tugas.akhirtugas.DataLongsor;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,11 +24,13 @@ import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
 import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
 import com.tugas.akhirtugas.network.ApiService;
 import com.tugas.akhirtugas.network.RetroClient;
+import com.tugas.akhirtugas.session.Session;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,6 +45,8 @@ public class DataLongsor extends AppCompatActivity {
     @BindView(R.id.fab)
     FloatingActionButton fab;
     Context context = this;
+    Session sharedLogin;
+    boolean flagLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +55,11 @@ public class DataLongsor extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Data Longsor");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        checkLogin();
+
         getDataLongsor();
+
         swipeRef.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -58,6 +68,12 @@ public class DataLongsor extends AppCompatActivity {
                 swipeRef.setRefreshing(false);
             }
         });
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void checkLogin() {
+        sharedLogin = new Session(context);
+        if (sharedLogin.getSPSudahLogin2()) fab.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -109,10 +125,15 @@ public class DataLongsor extends AppCompatActivity {
         });
     }
 
-    private void loadItem(List<DataLongsorItem> list){
+    private void loadItem(List<DataLongsorItem> list) {
         rv.setLayoutManager(new LinearLayoutManager(this));
         AdapterLongsor adapterNotifikasi = new AdapterLongsor(list, this);
         loading.setVisibility(View.GONE);
         rv.setAdapter(adapterNotifikasi);
+    }
+
+    @OnClick(R.id.fab)
+    public void onViewClicked() {
+        startActivity(new Intent(this, FormDataLongsor.class));
     }
 }

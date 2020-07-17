@@ -2,11 +2,19 @@ package com.tugas.akhirtugas.network;
 
 
 import com.tugas.akhirtugas.model.berita.ResponseBerita;
+import com.tugas.akhirtugas.model.crud.ResponseCrud;
 import com.tugas.akhirtugas.model.cuaca.ResponseWeather;
+import com.tugas.akhirtugas.model.login.ResponseLogin;
 import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -20,34 +28,55 @@ public interface ApiService {
     @GET("weather")
     Call<ResponseWeather> getWeatherKoordinat(@Query("lat") String lat, @Query("lon") String lon,
                                               @Query("units") String units, @Query("appid") String api);
-   /*
-    @FormUrlEncoded
-    @POST("read/LoginUser.php")
-    Call<ResponseLogin> login(@Field("email") String email, @Field("pass") String password);
 
     @FormUrlEncoded
-    @POST("read/Pengajuan.php")
-    Call<ResponsePengajuan> listPengajuan(@Field("id") String idPengguna);
+    @POST("read/LoginAdmin.php")
+    Call<ResponseLogin> login(@Field("email") String email, @Field("password") String password);
 
     @Multipart
-    @POST("create/pengajuans.php")
-    Call<ResponseInsert> insertPengajuan1(@Part("penggunaId") int penggunaId,
-                                          @Part("jenisKendaraan") String jenisKendaraan,
-                                          @Part("namaKendaraan") String namaKendaraan,
-                                          @Part("tahun") String tahun,
-                                          @Part("noKerangka") int noKerangka,
-                                          @Part("noMesin") String noMesin,
-                                          @Part MultipartBody.Part bpkb,
-                                          @Part MultipartBody.Part stnk,
-                                          @Part("besaranPinjaman") int besaranPinjaman,
-                                          @Part("angsuran") int angsuran);
+    @POST("create/Berita.php")
+    Call<ResponseCrud> createBerita(@Part("judul_berita") String judulBerita,
+                                    @Part("deskripsi") String deskripsi,
+                                    @Part("tanggal") String tanggal,
+                                    @Part MultipartBody.Part image);
 
     @Multipart
-    @POST("create/User.php")
-    Call<ResponseCrud> register(@Part("nik") int nik,
-                                @Part("nama") String nama,
-                                @Part("alamat") String alamat,
-                                @Part("email") String email,
-                                @Part("pass") String pass,
-                                @Part MultipartBody.Part image);*/
+    @POST("update/Berita.php")
+    Call<ResponseCrud> updateBeritaImage(@Part("id") int id,
+                                         @Part("judul_berita") String judulBerita,
+                                         @Part("deskripsi") String deskripsi,
+                                         @Part("hapus") String hapus,
+                                         @Part MultipartBody.Part image);
+
+    @FormUrlEncoded
+    @POST("update/Berita.php")
+    Call<ResponseCrud> updateBeritaField(@Field("id") int id,
+                                         @Field("judul_berita") String judulBerita,
+                                         @Field("deskripsi") String deskripsi);
+
+    @FormUrlEncoded
+    @POST("create/DataLongsor.php")
+    Call<ResponseCrud> createDataLongsor(@Field("jenis_bencana") String jenisBencana,
+                                         @Field("tanggal") String tanggal,
+                                         @Field("waktu") String waktu,
+                                         @Field("lokasi") String lokasi,
+                                         @Field("korban") String korban,
+                                         @Field("latitude") String latitude,
+                                         @Field("longitude") String longitude);
+
+    @FormUrlEncoded
+    @POST("update/DataLongsor.php")
+    Call<ResponseCrud> updateDataLongsor(@Field("id") int id,
+                                         @Field("jenis_bencana") String jenisBencana,
+                                         @Field("tanggal") String tanggal,
+                                         @Field("waktu") String waktu,
+                                         @Field("lokasi") String lokasi,
+                                         @Field("korban") String korban,
+                                         @Field("latitude") String latitude,
+                                         @Field("longitude") String longitude);
+
+    @FormUrlEncoded
+    @POST("delete/Delete.php")
+    Call<ResponseCrud> deleted(@Field("tabel") String tabelName, @Field("cari") String tablePrimary,
+                               @Field("idTabel") String valueTablePrimary);
 }

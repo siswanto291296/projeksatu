@@ -1,6 +1,8 @@
 package com.tugas.akhirtugas.Berita;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.tugas.akhirtugas.Adapter.AdapterBerita;
 import com.tugas.akhirtugas.R;
@@ -21,17 +24,18 @@ import com.tugas.akhirtugas.model.berita.BeritaItem;
 import com.tugas.akhirtugas.model.berita.ResponseBerita;
 import com.tugas.akhirtugas.network.ApiService;
 import com.tugas.akhirtugas.network.RetroClient;
+import com.tugas.akhirtugas.session.Session;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BeritaActivity extends AppCompatActivity {
-
     @BindView(R.id.loading)
     ProgressBar loading;
     @BindView(R.id.rv_berita)
@@ -39,6 +43,10 @@ public class BeritaActivity extends AppCompatActivity {
     @BindView(R.id.swlayout)
     SwipeRefreshLayout swipeRef;
     Context context = BeritaActivity.this;
+    Session sharedLogin;
+    boolean flagLogin = false;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +55,21 @@ public class BeritaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Berita");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        checkLogin();
+
         getBerita();
-        swipeRef.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getBerita();
-                // Berhenti berputar/refreshing
-                swipeRef.setRefreshing(false);
-            }
+        swipeRef.setOnRefreshListener(() -> {
+            getBerita();
+            // Berhenti berputar/refreshing
+            swipeRef.setRefreshing(false);
         });
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void checkLogin() {
+        sharedLogin = new Session(BeritaActivity.this);
+        if (sharedLogin.getSPSudahLogin2()) fab.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -107,10 +121,15 @@ public class BeritaActivity extends AppCompatActivity {
         });
     }
 
-    private void loadItem(List<BeritaItem> list){
+    private void loadItem(List<BeritaItem> list) {
         rv.setLayoutManager(new LinearLayoutManager(this));
         AdapterBerita adapterNotifikasi = new AdapterBerita(list, this);
         loading.setVisibility(View.GONE);
         rv.setAdapter(adapterNotifikasi);
+    }
+
+    @OnClick(R.id.fab)
+    public void onViewClicked() {
+        startActivity(new Intent(BeritaActivity.this, FormBerita.class));
     }
 }

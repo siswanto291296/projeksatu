@@ -61,6 +61,6 @@
         app:layout_anchor="@id/app_bar"
         android:visibility="gone"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/ic_baseline_edit_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

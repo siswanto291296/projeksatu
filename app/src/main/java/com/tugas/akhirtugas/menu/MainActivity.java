@@ -7,8 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -25,14 +28,18 @@ import com.tugas.akhirtugas.DataLongsor.DataLongsor;
 import com.tugas.akhirtugas.Galeri.GaleriActivity;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.kontak.KontakChat;
+import com.tugas.akhirtugas.session.Session;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.tugas.akhirtugas.session.Session.SP_SUDAH_LOGIN2;
+import static com.tugas.akhirtugas.utils.Logins.EMAIL;
+import static com.tugas.akhirtugas.utils.Logins.NAMA;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     @BindView(R.id.logobpbd1)
     ImageView logobpbd1;
     @BindView(R.id.toolbar)
@@ -63,6 +70,9 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
+    Session sharedLogin;
+    boolean flagLogin = false;
+    TextView username, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +81,13 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+        View headerView = navigationView.getHeaderView(0);
+
+        username = headerView.findViewById(R.id.txt_username);
+        email = headerView.findViewById(R.id.txt_email);
+
+        sharedLogin = new Session(MainActivity.this);
+        checkLogin();
 
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, KontakChat.class);
@@ -97,8 +114,21 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        if (flagLogin) getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_exit:
+                exit();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -152,11 +182,47 @@ public class MainActivity extends AppCompatActivity
                 info();
                 break;
             case R.id.btn_login:
+                intent(Login.class);
                 break;
         }
     }
 
     private void intent(Class activity) {
         startActivity(new Intent(MainActivity.this, activity));
+    }
+
+    private void checkLogin() {
+        flagLogin = sharedLogin.getSPSudahLogin2();
+
+        if (flagLogin) {
+            btnLogin.setVisibility(View.GONE);
+            username.setText(sharedLogin.getSessionString(NAMA).substring(0, 1).toUpperCase()
+                    + sharedLogin.getSessionString(NAMA).substring(1).toLowerCase());
+            email.setText(sharedLogin.getSessionString(EMAIL));
+        } else {
+            username.setVisibility(View.GONE);
+            email.setVisibility(View.GONE);
+        }
+    }
+
+    private void exit() {
+        AlertDialog.Builder aleBuilder = new AlertDialog.Builder(MainActivity.this);
+        //settting judul dan pesan
+        aleBuilder.setTitle("Keluar");
+        aleBuilder
+                .setMessage("Apakah anda yakin ingin keluar?")
+                .setCancelable(false)
+                .setPositiveButton("Ya", (dialog, which) -> {
+                    sharedLogin.saveSPBoolean(SP_SUDAH_LOGIN2, false);
+                    startActivity(new Intent(MainActivity.this, MainActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
+                })
+                .setNegativeButton("Tidak", (dialog, id1) -> {
+                    //cancel
+                    dialog.cancel();
+                });
+        AlertDialog alertDialog = aleBuilder.create();
+        alertDialog.show();
     }
 }

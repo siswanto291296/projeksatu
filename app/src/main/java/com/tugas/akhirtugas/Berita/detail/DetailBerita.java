@@ -1,13 +1,12 @@
 package com.tugas.akhirtugas.Berita.detail;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.DownloadListener;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -23,18 +22,20 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.tugas.akhirtugas.Berita.BeritaActivity;
+import com.tugas.akhirtugas.Berita.FormBerita;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.berita.BeritaItem;
+import com.tugas.akhirtugas.session.Session;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.tugas.akhirtugas.network.RetroClient.BASE_URL_IMAGE;
 import static com.tugas.akhirtugas.utils.Contans.DATA;
 
 public class DetailBerita extends AppCompatActivity {
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_layout)
@@ -50,6 +51,8 @@ public class DetailBerita extends AppCompatActivity {
     BeritaItem data;
     @BindView(R.id.img_poster)
     ImageView imgPoster;
+    Session sharedLogin;
+    boolean flagLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,14 @@ public class DetailBerita extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         UI();
+        checkLogin();
+    }
 
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+    @SuppressLint("RestrictedApi")
+    private void checkLogin() {
+        sharedLogin = new Session(DetailBerita.this);
+        if (sharedLogin.getSPSudahLogin2()) fab.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -101,6 +107,12 @@ public class DetailBerita extends AppCompatActivity {
         //scrool
         tvContent.setVerticalScrollBarEnabled(true);
         tvContent.setHorizontalScrollBarEnabled(true);
+    }
+
+    @OnClick(R.id.fab)
+    public void onViewClicked() {
+        startActivity(new Intent(DetailBerita.this, FormBerita.class)
+                .putExtra(DATA, data));
     }
 
     public class myWebclient extends WebViewClient {

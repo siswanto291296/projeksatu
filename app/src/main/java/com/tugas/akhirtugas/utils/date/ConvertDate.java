@@ -71,7 +71,7 @@ public class ConvertDate {
     }
 
     //ambil tahun
-    public static String ubahTanggal3(String inputDateStr) {
+    public static String changeDateServer(String inputDateStr) {
         DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy"); //pola server
         DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd"); //pola pengubah
 //        String inputDateStr="2013-06-24";
@@ -156,7 +156,7 @@ public class ConvertDate {
     }
 
     //tanggal hari ini
-    public static String tglHariIni() {
+    public static String currentDate() {
         Date now = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(now);

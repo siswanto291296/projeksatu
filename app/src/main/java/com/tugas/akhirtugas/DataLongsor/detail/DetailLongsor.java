@@ -1,10 +1,12 @@
 package com.tugas.akhirtugas.DataLongsor.detail;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,11 +25,14 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.tugas.akhirtugas.DataLongsor.FormDataLongsor;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
+import com.tugas.akhirtugas.session.Session;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal;
@@ -51,7 +56,11 @@ public class DetailLongsor extends AppCompatActivity implements OnMapReadyCallba
     @BindView(R.id.fab)
     FloatingActionButton fab;
     DataLongsorItem data;
+    @BindView(R.id.edit)
+    FloatingActionButton edit;
     private GoogleMap mMap;
+    Session sharedLogin;
+    boolean flagLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +75,15 @@ public class DetailLongsor extends AppCompatActivity implements OnMapReadyCallba
         mapFragment.getMapAsync(this);
 
         UI();
-
+        checkLogin();
     }
+
+    @SuppressLint("RestrictedApi")
+    private void checkLogin() {
+        sharedLogin = new Session(DetailLongsor.this);
+        if (sharedLogin.getSPSudahLogin2()) edit.setVisibility(View.VISIBLE);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,5 +148,11 @@ public class DetailLongsor extends AppCompatActivity implements OnMapReadyCallba
         int padding = 0; // offset from edges of the map in pixels
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         googleMap.animateCamera(cu);
+    }
+
+    @OnClick(R.id.edit)
+    public void onViewClicked() {
+        startActivity(new Intent(DetailLongsor.this, FormDataLongsor.class)
+                .putExtra(DATA, data));
     }
 }

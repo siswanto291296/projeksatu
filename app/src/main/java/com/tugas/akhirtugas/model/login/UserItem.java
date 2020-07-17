@@ -7,6 +7,9 @@ public class UserItem{
 	@SerializedName("id_admin")
 	private String idAdmin;
 
+	@SerializedName("email")
+	private String email;
+
 	@SerializedName("username")
 	private String username;
 
@@ -16,6 +19,14 @@ public class UserItem{
 
 	public String getIdAdmin(){
 		return idAdmin;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+	public String getEmail(){
+		return email;
 	}
 
 	public void setUsername(String username){

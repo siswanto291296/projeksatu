@@ -51,10 +51,11 @@ public class AdapterGaleri extends RecyclerView.Adapter<AdapterGaleri.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //code is all item click and set value
         holder.bookTitleId.setText(list.get(position).getJudulBerita());
-        Glide.with(context)
-                .load(BASE_URL_IMAGE + list.get(position).getFoto())
-                .into(holder.bookImgId);
-
+        if (list.get(position).getFoto() != null){
+            Glide.with(context)
+                    .load(BASE_URL_IMAGE + list.get(position).getFoto())
+                    .into(holder.bookImgId);
+        }
         //onclick
         holder.cardviewId.setOnClickListener(v -> {
             notifyFoto(context, list.get(position).getFoto());
