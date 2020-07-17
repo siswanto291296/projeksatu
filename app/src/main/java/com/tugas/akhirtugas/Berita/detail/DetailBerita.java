@@ -91,7 +91,9 @@ public class DetailBerita extends AppCompatActivity {
                     .load(BASE_URL_IMAGE + data.getFoto())
                     .into(imgPoster);
         }
-        getSupportActionBar().setTitle(data.getJudulBerita());
+        String title = data.getJudulBerita();
+        getSupportActionBar().setTitle(title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase());
+
         getSupportActionBar().setSubtitle("Oleh : Badan Penanganan Bencana");
         tvContent.setWebViewClient(new myWebclient());
         tvContent.getSettings().setJavaScriptEnabled(true);

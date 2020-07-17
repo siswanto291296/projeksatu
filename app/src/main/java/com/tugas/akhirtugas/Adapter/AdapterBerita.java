@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.Berita.detail.DetailBerita;
 import com.tugas.akhirtugas.model.berita.BeritaItem;
@@ -20,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.tugas.akhirtugas.network.RetroClient.BASE_URL_IMAGE;
 import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.MyFucntion.view;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal;
@@ -45,6 +47,12 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
         holder.JudulBerita.setText(list.get(position).getJudulBerita());
         holder.TglTerbit.setText(ubahTanggal(list.get(position).getTanggal()));
         holder.Penulis.setText("Oleh : Badan Pengawan Bencana");
+
+        if (list.get(position).getFoto() != null){
+            Glide.with(context)
+                    .load(BASE_URL_IMAGE + list.get(position).getFoto())
+                    .into(holder.PosterBerita);
+        }
 
         //onclick
         holder.ln.setOnClickListener(v -> {

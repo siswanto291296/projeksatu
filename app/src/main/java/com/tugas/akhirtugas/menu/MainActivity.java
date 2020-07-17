@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.tugas.akhirtugas.BPBD.BpbdActivity;
 import com.tugas.akhirtugas.Berita.BeritaActivity;
+import com.tugas.akhirtugas.Cuaca.Cuaca;
 import com.tugas.akhirtugas.DataLongsor.DataLongsor;
 import com.tugas.akhirtugas.Galeri.GaleriActivity;
 import com.tugas.akhirtugas.R;
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity
                 berita();
                 break;
             case R.id.cuaca:
+                intent(Cuaca.class);
                 break;
             case R.id.data_longsor:
                 dataLongsor();

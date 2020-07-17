@@ -2,10 +2,12 @@ package com.tugas.akhirtugas.network;
 
 
 import com.tugas.akhirtugas.model.berita.ResponseBerita;
+import com.tugas.akhirtugas.model.cuaca.ResponseWeather;
 import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("read/Berita.php")
@@ -13,6 +15,11 @@ public interface ApiService {
 
     @GET("read/DataLongsor.php")
     Call<ResponseLongsor> getDataLongsor();
+
+    //https://api.openweathermap.org/data/2.5/weather?lat=-7.026253&lon=109.581192&units=metric&appid=cbfdb21fa1793c10b14b6b6d00fbef03
+    @GET("weather")
+    Call<ResponseWeather> getWeatherKoordinat(@Query("lat") String lat, @Query("lon") String lon,
+                                              @Query("units") String units, @Query("appid") String api);
    /*
     @FormUrlEncoded
     @POST("read/LoginUser.php")

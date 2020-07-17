@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tugas.akhirtugas">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Cuaca.Cuaca" android:theme="@style/ShowActionBar"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,7 +31,7 @@
 
         <activity
             android:name=".DataLongsor.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".DataLongsor.detail.DetailLongsor"
             android:label="@string/title_activity_detail_longsor"
@@ -44,7 +43,6 @@
         <activity
             android:name=".Berita.BeritaActivity"
             android:theme="@style/ShowActionBar" />
-        <activity android:name=".kontak.MapsActivity" />
         <activity
             android:name=".kontak.KontakChat"
             android:theme="@style/NoTitlle" />
@@ -53,7 +51,9 @@
             android:theme="@style/NoTitlle" />
         <activity android:name=".menu.Login" />
         <activity android:name=".Galeri.ViewGaleri" />
-        <activity android:name=".Galeri.GaleriActivity" />
+        <activity
+            android:name=".Galeri.GaleriActivity"
+            android:theme="@style/ShowActionBar" />
         <activity
             android:name=".menu.TentangAplikasi"
             android:theme="@style/NoTitlle" />
