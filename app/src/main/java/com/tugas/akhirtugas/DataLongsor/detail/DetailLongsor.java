@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -136,19 +137,23 @@ public class DetailLongsor extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(Double.parseDouble(data.getLatitude()), Double.parseDouble(data.getLongitude()));
-        mMap.addMarker(new MarkerOptions().position(sydney).title(data.getLokasi()))
-                .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.avalanche));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        //mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));
+        try {
+            // Add a marker in Sydney and move the camera
+            LatLng sydney = new LatLng(Double.parseDouble(data.getLatitude()), Double.parseDouble(data.getLongitude()));
+            mMap.addMarker(new MarkerOptions().position(sydney).title(data.getLokasi()))
+                    .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.avalanche));
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            //mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        builder.include(sydney);
-        LatLngBounds bounds = builder.build();
-        int padding = 0; // offset from edges of the map in pixels
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        googleMap.animateCamera(cu);
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            builder.include(sydney);
+            LatLngBounds bounds = builder.build();
+            int padding = 0; // offset from edges of the map in pixels
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            googleMap.animateCamera(cu);
+        }catch (Exception e){
+            Log.e("map", e.getMessage());
+        }
     }
 
     @OnClick(R.id.edit)
