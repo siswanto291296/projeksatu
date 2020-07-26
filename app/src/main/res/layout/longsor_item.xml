@@ -1,50 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ln"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/v_16dp"
+    android:layout_marginTop="@dimen/v_16dp"
+    android:layout_marginRight="@dimen/v_16dp"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/PosterBerita"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_mountain" />
-
     <TextView
-        android:id="@+id/JudulBerita"
+        android:id="@+id/txt_judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/accent"
+        android:paddingBottom="8dp"
         android:text="Judul Artikel Berita"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="#e67817"
+        android:paddingLeft="@dimen/v_16dp"
+        android:paddingRight="@dimen/v_16dp"
+        android:stretchColumns="1">
 
-        <TextView
-            android:id="@+id/TglTerbit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Senin, 12 Februari 2018." />
+        <TableRow android:background="#e67817">
 
-        <TextView
-            android:id="@+id/Penulis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:text="Oleh : Firas Luthfi Dwiyansyah" />
-    </LinearLayout>
+            <TextView
+                android:padding="3dp"
+                android:text="Korban Jiwa"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="@dimen/v_16dp"
-        android:background="@color/colorPrimary" />
+            <TextView
+                android:gravity="right"
+                android:padding="3dp"
+                android:text=""
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/txt_korban"
+                android:gravity="right"
+                android:padding="3dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:text="10/Orang" />
+        </TableRow>
+
+        <TableRow android:background="#e67817">
+
+            <TextView
+                android:padding="3dp"
+                android:text="Tanggal"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="right"
+                android:padding="3dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/txt_tgl"
+                android:gravity="right"
+                android:padding="3dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:text="23/02/2020" />
+        </TableRow>
+
+        <TableRow android:background="#e67817">
+
+            <TextView
+                android:padding="3dp"
+                android:text="Waktu"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="right"
+                android:padding="3dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/txt_waktu"
+                android:gravity="right"
+                android:padding="3dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:text="20:20" />
+        </TableRow>
+
+        <TableRow android:background="#e67817">
+
+            <TextView
+                android:padding="3dp"
+                android:text="Alamat"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="right"
+                android:padding="3dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/txt_alamat"
+                android:gravity="right"
+                android:padding="3dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:text="Pekalongan" />
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

@@ -24,16 +24,19 @@
             android:id="@+id/tgl_waktu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="tanggal dan waktu" />
+            android:text="tanggal dan waktu"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txt_lokasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="lokasi" />
+            android:text="lokasi"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txt_korban"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="korban" />
@@ -42,7 +45,7 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:layout_marginTop="@dimen/v_16dp" />
 
     </LinearLayout>

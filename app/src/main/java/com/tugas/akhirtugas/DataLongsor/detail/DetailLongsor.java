@@ -2,6 +2,7 @@ package com.tugas.akhirtugas.DataLongsor.detail;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -142,13 +144,22 @@ public class DetailLongsor extends AppCompatActivity implements OnMapReadyCallba
             LatLng sydney = new LatLng(Double.parseDouble(data.getLatitude()), Double.parseDouble(data.getLongitude()));
             mMap.addMarker(new MarkerOptions().position(sydney).title(data.getLokasi()))
                     .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.avalanche));
-            //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-            //mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));
 
+            mMap.addCircle(new CircleOptions()
+                    .center(sydney)
+                    .radius(10)
+                    .strokeWidth(1f)
+                    .strokeColor(Color.BLUE)
+                    .fillColor(Color.parseColor("#500084d3"))
+            );
+           /* mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));*/
+
+            //focus
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             builder.include(sydney);
             LatLngBounds bounds = builder.build();
-            int padding = 0; // offset from edges of the map in pixels
+            int padding = 50; // offset from edges of the map in pixels
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
             googleMap.animateCamera(cu);
         }catch (Exception e){

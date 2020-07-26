@@ -4,14 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tugas.akhirtugas.Berita.detail.DetailBerita;
 import com.tugas.akhirtugas.DataLongsor.detail.DetailLongsor;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
@@ -23,7 +21,7 @@ import butterknife.ButterKnife;
 
 import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.MyFucntion.view;
-import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal;
+import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal2;
 
 public class AdapterLongsor extends RecyclerView.Adapter<AdapterLongsor.ViewHolder> {
     private List<DataLongsorItem> list;
@@ -43,9 +41,11 @@ public class AdapterLongsor extends RecyclerView.Adapter<AdapterLongsor.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //code is all item click and set value
-        holder.JudulBerita.setText(list.get(position).getJenisBencana());
-        holder.TglTerbit.setText(ubahTanggal(list.get(position).getTanggal()));
-        holder.Penulis.setText("Oleh : Badan Pengawan Bencana");
+        holder.txtJudul.setText(list.get(position).getJenisBencana());
+        holder.txtKorban.setText(list.get(position).getKorban()+ "/Jiwa");
+        holder.txtTgl.setText(ubahTanggal2(list.get(position).getTanggal()));
+        holder.txtWaktu.setText(list.get(position).getWaktu() + " WIB");
+        holder.txtAlamat.setText(list.get(position).getLokasi());
 
         //onclick
         holder.ln.setOnClickListener(v -> {
@@ -60,14 +60,16 @@ public class AdapterLongsor extends RecyclerView.Adapter<AdapterLongsor.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.PosterBerita)
-        ImageView PosterBerita;
-        @BindView(R.id.JudulBerita)
-        TextView JudulBerita;
-        @BindView(R.id.TglTerbit)
-        TextView TglTerbit;
-        @BindView(R.id.Penulis)
-        TextView Penulis;
+        @BindView(R.id.txt_judul)
+        TextView txtJudul;
+        @BindView(R.id.txt_korban)
+        TextView txtKorban;
+        @BindView(R.id.txt_tgl)
+        TextView txtTgl;
+        @BindView(R.id.txt_waktu)
+        TextView txtWaktu;
+        @BindView(R.id.txt_alamat)
+        TextView txtAlamat;
         @BindView(R.id.ln)
         LinearLayout ln;
 
