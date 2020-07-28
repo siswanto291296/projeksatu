@@ -1,4 +1,4 @@
-package com.tugas.akhirtugas.DataLongsor;
+package com.tugas.akhirtugas.DataLongsor.form;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -10,43 +10,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ProgressBar;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
-import com.tugas.akhirtugas.Berita.BeritaActivity;
-import com.tugas.akhirtugas.Berita.FormBerita;
+import com.tugas.akhirtugas.DataLongsor.DataLongsor;
+import com.tugas.akhirtugas.DataLongsor.maps.MapsActivity;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.crud.ResponseCrud;
 import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
 import com.tugas.akhirtugas.network.ApiService;
 import com.tugas.akhirtugas.network.RetroClient;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.tugas.akhirtugas.network.RetroClient.BASE_URL_IMAGE;
 import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.changeDateServer;
-import static com.tugas.akhirtugas.utils.date.ConvertDate.currentDate;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal2;
 
 public class FormDataLongsor extends AppCompatActivity {
@@ -72,6 +63,7 @@ public class FormDataLongsor extends AppCompatActivity {
     DataLongsorItem data;
     Calendar myCalendar;
     TimePickerDialog timePickerDialog;
+    String idKec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +91,8 @@ public class FormDataLongsor extends AppCompatActivity {
             btnTgl.setText(ubahTanggal2(data.getTanggal()));
             btnWaktu.setText(data.getWaktu());
         }
+
+        idKec = getIntent().getStringExtra("idKec");
     }
 
 
@@ -187,14 +181,14 @@ public class FormDataLongsor extends AppCompatActivity {
     private void created(String jenisBencana, String tanggal, String waktu, String lokasi,
                          String korban, String latitude, String longitude) {
         ApiService service = RetroClient.getApiService();
-        Call<ResponseCrud> call = service.createDataLongsor(jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
+        Call<ResponseCrud> call = service.createDataLongsor(idKec, jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
         call.enqueue(new Callback<ResponseCrud>() {
             @Override
             public void onResponse(Call<ResponseCrud> call, Response<ResponseCrud> response) {
                 if (response.body().isResponse()) {
                     Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(FormDataLongsor.this, DataLongsor.class)
+                    startActivity(new Intent(FormDataLongsor.this, MapsActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     //hancurkan activity
                     finish();
@@ -221,8 +215,9 @@ public class FormDataLongsor extends AppCompatActivity {
                 if (response.body().isResponse()) {
                     Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(FormDataLongsor.this, DataLongsor.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    startActivity(new Intent(FormDataLongsor.this, MapsActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .putExtra("idKec", idKec));
                     //hancurkan activity
                     finish();
                 } else {

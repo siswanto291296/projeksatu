@@ -25,6 +25,7 @@ import com.tugas.akhirtugas.BPBD.BpbdActivity;
 import com.tugas.akhirtugas.Berita.BeritaActivity;
 import com.tugas.akhirtugas.Cuaca.Cuaca;
 import com.tugas.akhirtugas.DataLongsor.DataLongsor;
+import com.tugas.akhirtugas.DataLongsor.Kecamatan;
 import com.tugas.akhirtugas.Galeri.GaleriActivity;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.kontak.KontakChat;
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void dataLongsor() {
-        intent(DataLongsor.class);
+        intent(Kecamatan.class);
     }
 
     private void chat() {

@@ -11,12 +11,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetroClient {
     private static Retrofit retrofit = null;
     //server
-    public static String BASE_URL = "https://umpp.000webhostapp.com/";
-    public static String BASE_URL_IMAGE = "https://umpp.000webhostapp.com/img/";
+   /* public static String BASE_URL = "https://umpp.000webhostapp.com/";
+    public static String BASE_URL_IMAGE = "https://umpp.000webhostapp.com/img/";*/
 
     //lokal
-    /*public static String BASE_URL = "http://192.168.43.74/bencana/";
-    public static String BASE_URL_IMAGE = "http://192.168.43.74/bencana/img/";*/
+    public static String BASE_URL = "http://192.168.43.74/bencana/";
+    public static String BASE_URL_IMAGE = "http://192.168.43.74/bencana/img/";
 
     private static Retrofit getClient(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

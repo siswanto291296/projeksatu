@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tugas.akhirtugas">
+
     <uses-permission android:name="android.permission.INTERNET" /> <!-- if you want to load images from a file OR from the internet -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,7 +19,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".DataLongsor.FormDataLongsor"
+            android:name=".DataLongsor.form.FormKecamatan"
+            android:theme="@style/ShowActionBar"/>
+        <activity
+            android:name=".DataLongsor.Kecamatan"
+            android:theme="@style/ShowActionBar" />
+        <activity
+            android:name=".DataLongsor.form.FormDataLongsor"
             android:theme="@style/ShowActionBar" />
         <activity
             android:name=".Berita.FormBerita"
@@ -26,12 +33,13 @@
         <activity
             android:name=".Cuaca.Cuaca"
             android:theme="@style/ShowActionBar" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".DataLongsor.MapsActivity"
+            android:name=".DataLongsor.maps.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".DataLongsor.detail.DetailLongsor"

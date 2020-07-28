@@ -29,7 +29,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.tugas.akhirtugas.DataLongsor.FormDataLongsor;
+import com.tugas.akhirtugas.DataLongsor.form.FormDataLongsor;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
 import com.tugas.akhirtugas.session.Session;

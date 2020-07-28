@@ -18,12 +18,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.tugas.akhirtugas.Adapter.AdapterLongsor;
+import com.tugas.akhirtugas.Adapter.AdapterKecamatan;
 import com.tugas.akhirtugas.DataLongsor.form.FormDataLongsor;
+import com.tugas.akhirtugas.DataLongsor.form.FormKecamatan;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.kecamatan.KecamatanItem;
-import com.tugas.akhirtugas.model.longsor.DataLongsorItem;
-import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
+import com.tugas.akhirtugas.model.kecamatan.ResponseKecamatan;
 import com.tugas.akhirtugas.network.ApiService;
 import com.tugas.akhirtugas.network.RetroClient;
 import com.tugas.akhirtugas.session.Session;
@@ -37,47 +37,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.tugas.akhirtugas.utils.Contans.DATA;
+public class Kecamatan extends AppCompatActivity {
 
-public class DataLongsor extends AppCompatActivity {
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     @BindView(R.id.loading)
     ProgressBar loading;
     @BindView(R.id.rv_berita)
     RecyclerView rv;
     @BindView(R.id.swlayout)
     SwipeRefreshLayout swipeRef;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
     Context context = this;
     Session sharedLogin;
-    KecamatanItem data;
-    String idKec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_longsor);
+        setContentView(R.layout.activity_kecamatan);
         ButterKnife.bind(this);
-        getSupportActionBar().setTitle("Data Longsor");
+
+        getSupportActionBar().setTitle("Data Kecamatan");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         checkLogin();
 
-        UI();
+        getDataLongsor();
+
         swipeRef.setOnRefreshListener(() -> {
-            getDataLongsor(idKec);
+            getDataLongsor();
             // Berhenti berputar/refreshing
             swipeRef.setRefreshing(false);
         });
-    }
-
-    private void UI() {
-        data = getIntent().getParcelableExtra(DATA);
-
-        if (data != null) {
-            idKec = data.getIdKec();
-            getDataLongsor(idKec);
-        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -104,17 +94,17 @@ public class DataLongsor extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getDataLongsor(String id) {
+    private void getDataLongsor() {
         loading.setVisibility(View.VISIBLE);
         ApiService apiService = RetroClient.getApiService();
-        Call<ResponseLongsor> loginCall = apiService.getByIdDataLongsor(id);
-        loginCall.enqueue(new Callback<ResponseLongsor>() {
+        Call<ResponseKecamatan> loginCall = apiService.getKecamatan();
+        loginCall.enqueue(new Callback<ResponseKecamatan>() {
             @Override
-            public void onResponse(Call<ResponseLongsor> call, Response<ResponseLongsor> response) {
-                ResponseLongsor login = response.body();
+            public void onResponse(Call<ResponseKecamatan> call, Response<ResponseKecamatan> response) {
+                ResponseKecamatan login = response.body();
                 try {
                     if (login.isResponse()) {
-                        loadItem(response.body().getDataLongsor());
+                        loadItem(response.body().getKecamatan());
                         loading.setVisibility(View.GONE);
                     } else {
                         loading.setVisibility(View.GONE);
@@ -128,22 +118,22 @@ public class DataLongsor extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseLongsor> call, Throwable t) {
+            public void onFailure(Call<ResponseKecamatan> call, Throwable t) {
                 loading.setVisibility(View.GONE);
                 Toast.makeText(context, "error = " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void loadItem(List<DataLongsorItem> list) {
+    private void loadItem(List<KecamatanItem> list) {
         rv.setLayoutManager(new LinearLayoutManager(this));
-        AdapterLongsor adapterNotifikasi = new AdapterLongsor(list, this);
+        AdapterKecamatan adapterNotifikasi = new AdapterKecamatan(list, this);
         loading.setVisibility(View.GONE);
         rv.setAdapter(adapterNotifikasi);
     }
 
     @OnClick(R.id.fab)
     public void onViewClicked() {
-        startActivity(new Intent(this, FormDataLongsor.class));
+        startActivity(new Intent(this, FormKecamatan.class));
     }
 }
