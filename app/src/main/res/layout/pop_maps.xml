@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ln"
-    android:layout_width="wrap_content"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/v_16dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/txt_judul"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@color/accent"
         android:paddingBottom="8dp"
@@ -19,8 +19,8 @@
         android:textStyle="bold" />
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:background="#e67817"
         android:paddingLeft="@dimen/v_16dp"
         android:paddingRight="@dimen/v_16dp"

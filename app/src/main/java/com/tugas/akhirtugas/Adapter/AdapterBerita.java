@@ -46,7 +46,7 @@ public class AdapterBerita extends RecyclerView.Adapter<AdapterBerita.ViewHolder
         //code is all item click and set value
         holder.JudulBerita.setText(list.get(position).getJudulBerita());
         holder.TglTerbit.setText(ubahTanggal(list.get(position).getTanggal()));
-        holder.Penulis.setText("Oleh : Badan Pengawan Bencana");
+        holder.Penulis.setText("Oleh : BPBD Kabupaten Pekalongan");
 
         if (list.get(position).getFoto() != null){
             Glide.with(context)

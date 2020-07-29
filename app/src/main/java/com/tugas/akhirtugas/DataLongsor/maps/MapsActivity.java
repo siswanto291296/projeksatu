@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.tugas.akhirtugas.Berita.detail.DetailBerita;
 import com.tugas.akhirtugas.DataLongsor.form.FormDataLongsor;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.kecamatan.KecamatanItem;
@@ -44,6 +45,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     KecamatanItem data;
     String idKec;
     Session sharedLogin;
+    StopsInfoWindow infoWindow;
+    HashMap<Marker, DataLongsorItem> stopsMarkersInfo = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        infoWindow = new StopsInfoWindow(stopsMarkersInfo, MapsActivity.this);
         UI();
     }
 
@@ -66,7 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             idKec = data.getIdKec();
         }
 
-        if (getIntent().getStringExtra("idKec") != null){
+        if (getIntent().getStringExtra("idKec") != null) {
             idKec = getIntent().getStringExtra("idKec");
         }
     }
@@ -75,6 +79,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getDataLongsor(idKec);
+
+        //jika dia sebagao admin
+        if (sharedLogin.getSPSudahLogin2()) {
+            //onclik info windows
+            mMap.setOnInfoWindowClickListener(marker -> {
+                DataLongsorItem data = stopsMarkersInfo.get(marker);
+                startActivity(new Intent(this, FormDataLongsor.class)
+                        .putExtra(DATA, data));
+            });
+        }
     }
 
     private void getDataLongsor(String id) {
@@ -104,7 +118,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void initMarker(List<DataLongsorItem> listData) {
-        HashMap<Marker, DataLongsorItem> stopsMarkersInfo = new HashMap<>();
 
         for (int i = 0; i < listData.size(); i++) {
             //set latlng nya
@@ -124,10 +137,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //lalu arahkan zooming ke marker index ke 0
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new
                     LatLng(latLng.latitude, latLng.longitude), 17.0f));
+            //hashmap
             stopsMarkersInfo.put(marker, listData.get(i));
         }
 
-        mMap.setInfoWindowAdapter(new StopsInfoWindow(stopsMarkersInfo, MapsActivity.this)); // passed the HashMap
+        mMap.setInfoWindowAdapter(infoWindow); // passed the HashMap
     }
 
     @OnClick(R.id.btn_tambah)

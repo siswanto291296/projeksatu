@@ -92,4 +92,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("create/Kecamatan.php")
     Call<ResponseCrud> createKecamatan(@Field("nama") String nama);
+
+    @FormUrlEncoded
+    @POST("update/Kecamatan.php")
+    Call<ResponseCrud> updateKecamatan(@Field("id") String id, @Field("nama") String nama);
 }

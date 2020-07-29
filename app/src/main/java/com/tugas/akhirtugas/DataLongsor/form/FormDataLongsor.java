@@ -40,7 +40,7 @@ import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.changeDateServer;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal2;
 
-public class FormDataLongsor extends AppCompatActivity {
+public class FormDataLongsor extends AppCompatActivity implements Callback<ResponseCrud>{
     @BindView(R.id.jenis_bencana)
     TextInputEditText jenisBencana;
     @BindView(R.id.korban)
@@ -182,81 +182,20 @@ public class FormDataLongsor extends AppCompatActivity {
                          String korban, String latitude, String longitude) {
         ApiService service = RetroClient.getApiService();
         Call<ResponseCrud> call = service.createDataLongsor(idKec, jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
-        call.enqueue(new Callback<ResponseCrud>() {
-            @Override
-            public void onResponse(Call<ResponseCrud> call, Response<ResponseCrud> response) {
-                if (response.body().isResponse()) {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(FormDataLongsor.this, MapsActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    //hancurkan activity
-                    finish();
-                } else {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseCrud> call, Throwable t) {
-                Toast.makeText(FormDataLongsor.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error ", t.getMessage());
-            }
-        });
+        call.enqueue(this);
     }
 
     private void update(String jenisBencana, String tanggal, String waktu, String lokasi,
                         String korban, String latitude, String longitude) {
         ApiService service = RetroClient.getApiService();
         Call<ResponseCrud> call = service.updateDataLongsor(Integer.parseInt(data.getIdBencana()), jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
-        call.enqueue(new Callback<ResponseCrud>() {
-            @Override
-            public void onResponse(Call<ResponseCrud> call, Response<ResponseCrud> response) {
-                if (response.body().isResponse()) {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(FormDataLongsor.this, MapsActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
-                            .putExtra("idKec", idKec));
-                    //hancurkan activity
-                    finish();
-                } else {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseCrud> call, Throwable t) {
-                Toast.makeText(FormDataLongsor.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error ", t.getMessage());
-            }
-        });
+        call.enqueue(this);
     }
 
     private void deleted(String tableName, String tablePrimary, String valueID) {
         ApiService service = RetroClient.getApiService();
         Call<ResponseCrud> call = service.deleted(tableName, tablePrimary, valueID);
-        call.enqueue(new Callback<ResponseCrud>() {
-            @Override
-            public void onResponse(Call<ResponseCrud> call, Response<ResponseCrud> response) {
-                if (response.body().isResponse()) {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(FormDataLongsor.this, DataLongsor.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    //hancurkan activity
-                    finish();
-                } else {
-                    Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseCrud> call, Throwable t) {
-                Toast.makeText(FormDataLongsor.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error ", t.getMessage());
-            }
-        });
+        call.enqueue(this);
     }
 
     private void alertDeleted() {
@@ -275,5 +214,26 @@ public class FormDataLongsor extends AppCompatActivity {
                 });
         AlertDialog alertDialog = aleBuilder.create();
         alertDialog.show();
+    }
+
+    @Override
+    public void onResponse(Call<ResponseCrud> call, Response<ResponseCrud> response) {
+        if (response.body().isResponse()) {
+            Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(FormDataLongsor.this, MapsActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra("idKec", idKec));
+            //hancurkan activity
+            finish();
+        } else {
+            Toast.makeText(FormDataLongsor.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ResponseCrud> call, Throwable t) {
+        Toast.makeText(FormDataLongsor.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+        Log.e("error ", t.getMessage());
     }
 }

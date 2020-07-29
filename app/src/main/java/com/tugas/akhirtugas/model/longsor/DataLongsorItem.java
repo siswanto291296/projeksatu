@@ -31,6 +31,19 @@ public class DataLongsorItem implements Parcelable {
 	@SerializedName("longitude")
 	private String longitude;
 
+	public DataLongsorItem(String lokasi, String latitude, String waktu, String korban,
+						   String idBencana, String jenisBencana, String tanggal,
+						   String longitude) {
+		this.lokasi = lokasi;
+		this.latitude = latitude;
+		this.waktu = waktu;
+		this.korban = korban;
+		this.idBencana = idBencana;
+		this.jenisBencana = jenisBencana;
+		this.tanggal = tanggal;
+		this.longitude = longitude;
+	}
+
 	public void setLokasi(String lokasi){
 		this.lokasi = lokasi;
 	}
