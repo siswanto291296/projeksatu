@@ -3,10 +3,9 @@ package com.tugas.akhirtugas.kontak;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,11 +15,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.tugas.akhirtugas.DataLongsor.maps.MapsActivity;
 import com.tugas.akhirtugas.R;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class KontakChat extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -31,6 +31,7 @@ public class KontakChat extends AppCompatActivity implements OnMapReadyCallback 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kontak_chat);
+        ButterKnife.bind(this);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -60,7 +61,7 @@ public class KontakChat extends AppCompatActivity implements OnMapReadyCallback 
         //set size icon
         int height = 100;
         int width = 100;
-        BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.logo_bpbd1);
+        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.logo_bpbd1);
         Bitmap b = bitmapdraw.getBitmap();
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
@@ -70,5 +71,10 @@ public class KontakChat extends AppCompatActivity implements OnMapReadyCallback 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new
                 LatLng(-7.0243857, 109.5896233), 17.0f));
 
+    }
+
+    @OnClick(R.id.tlp)
+    public void onViewClicked() {
+        startActivity(new Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:(0285)381905")));
     }
 }

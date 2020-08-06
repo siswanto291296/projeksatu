@@ -60,10 +60,11 @@
                         android:layout_marginRight="10dp"
                         android:text="Alamat Kantor     : Jl.Sumbing No.2 Kajen"
                         android:textColor="@color/primaryText"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tlp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -71,7 +72,8 @@
                         android:layout_marginRight="10dp"
                         android:text="Telepon                 : (0285) 381905"
                         android:textColor="@color/primaryText"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
+                        android:drawableRight="@drawable/phone"
                         android:textStyle="bold" />
 
                     <TextView
@@ -82,7 +84,7 @@
                         android:layout_marginRight="10dp"
                         android:text="Faks                       : (0285) 3830912"
                         android:textColor="@color/primaryText"
-                        android:textSize="18dp"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
