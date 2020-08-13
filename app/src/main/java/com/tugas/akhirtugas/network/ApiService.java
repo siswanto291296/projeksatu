@@ -71,7 +71,10 @@ public interface ApiService {
                                          @Field("lokasi") String lokasi,
                                          @Field("korban") String korban,
                                          @Field("latitude") String latitude,
-                                         @Field("longitude") String longitude);
+                                         @Field("longitude") String longitude,
+                                         @Field("penduduk") String penduduk,
+                                         @Field("kejadian") String kejadian,
+                                         @Field("penanggulangan") String penanggulangan);
 
     @FormUrlEncoded
     @POST("update/DataLongsor.php")
@@ -82,7 +85,10 @@ public interface ApiService {
                                          @Field("lokasi") String lokasi,
                                          @Field("korban") String korban,
                                          @Field("latitude") String latitude,
-                                         @Field("longitude") String longitude);
+                                         @Field("longitude") String longitude,
+                                         @Field("penduduk") String penduduk,
+                                         @Field("kejadian") String kejadian,
+                                         @Field("penanggulangan") String penanggulangan);
 
     @FormUrlEncoded
     @POST("delete/Delete.php")

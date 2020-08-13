@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.tugas.akhirtugas.DataLongsor.DataLongsor;
 import com.tugas.akhirtugas.DataLongsor.maps.MapsActivity;
 import com.tugas.akhirtugas.R;
 import com.tugas.akhirtugas.model.crud.ResponseCrud;
@@ -40,7 +39,7 @@ import static com.tugas.akhirtugas.utils.Contans.DATA;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.changeDateServer;
 import static com.tugas.akhirtugas.utils.date.ConvertDate.ubahTanggal2;
 
-public class FormDataLongsor extends AppCompatActivity implements Callback<ResponseCrud>{
+public class FormDataLongsor extends AppCompatActivity implements Callback<ResponseCrud> {
     @BindView(R.id.jenis_bencana)
     TextInputEditText jenisBencana;
     @BindView(R.id.korban)
@@ -64,6 +63,12 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
     Calendar myCalendar;
     TimePickerDialog timePickerDialog;
     String idKec;
+    @BindView(R.id.penduduk)
+    TextInputEditText penduduk;
+    @BindView(R.id.kejadian)
+    TextInputEditText kejadian;
+    @BindView(R.id.penanggulangan)
+    TextInputEditText penanggulangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +88,16 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
             flagUpdate = true;
             btnSimpan.setText("Ubah");
 
-            jenisBencana.setText(data.getJenisBencana());
-            korban.setText(data.getKorban());
-            latitude.setText(data.getLatitude());
-            longitude.setText(data.getLongitude());
-            lokasi.setText(data.getLokasi());
-            btnTgl.setText(ubahTanggal2(data.getTanggal()));
-            btnWaktu.setText(data.getWaktu());
+            jenisBencana.setText("" + data.getJenisBencana());
+            korban.setText("" + data.getKorban());
+            latitude.setText("" + data.getLatitude());
+            longitude.setText("" + data.getLongitude());
+            lokasi.setText("" + data.getLokasi());
+            btnTgl.setText("" + ubahTanggal2(data.getTanggal()));
+            btnWaktu.setText("" + data.getWaktu());
+            penduduk.setText("" + data.getPenduduk());
+            kejadian.setText("" + data.getKejadian());
+            penanggulangan.setText("" + data.getPenanggulangan());
         }
 
         idKec = getIntent().getStringExtra("idKec");
@@ -109,12 +117,14 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
                 if (flagUpdate) {
                     update(jenisBencana.getText().toString(), changeDateServer(btnTgl.getText().toString()),
                             btnWaktu.getText().toString(), lokasi.getText().toString(), korban.getText().toString(),
-                            latitude.getText().toString(), longitude.getText().toString());
+                            latitude.getText().toString(), longitude.getText().toString(),
+                            penduduk.getText().toString(), kejadian.getText().toString(), penanggulangan.getText().toString());
                 } else {
                     //created new news
                     created(jenisBencana.getText().toString(), changeDateServer(btnTgl.getText().toString()),
                             btnWaktu.getText().toString(), lokasi.getText().toString(), korban.getText().toString(),
-                            latitude.getText().toString(), longitude.getText().toString());
+                            latitude.getText().toString(), longitude.getText().toString(),
+                            penduduk.getText().toString(), kejadian.getText().toString(), penanggulangan.getText().toString());
                 }
                 break;
         }
@@ -179,16 +189,21 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
     }
 
     private void created(String jenisBencana, String tanggal, String waktu, String lokasi,
-                         String korban, String latitude, String longitude) {
+                         String korban, String latitude, String longitude,
+                         String penduduk, String kejadian, String penanggulangan) {
         ApiService service = RetroClient.getApiService();
-        Call<ResponseCrud> call = service.createDataLongsor(idKec, jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
+        Call<ResponseCrud> call = service.createDataLongsor(idKec, jenisBencana, tanggal, waktu,
+                lokasi, korban, latitude, longitude, penduduk, kejadian, penanggulangan);
         call.enqueue(this);
     }
 
     private void update(String jenisBencana, String tanggal, String waktu, String lokasi,
-                        String korban, String latitude, String longitude) {
+                        String korban, String latitude, String longitude, String penduduk, String kejadian,
+                        String penanggulangan) {
         ApiService service = RetroClient.getApiService();
-        Call<ResponseCrud> call = service.updateDataLongsor(Integer.parseInt(data.getIdBencana()), jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude);
+        Call<ResponseCrud> call = service.updateDataLongsor(Integer.parseInt(data.getIdBencana()),
+                jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude, penduduk, kejadian,
+                penanggulangan);
         call.enqueue(this);
     }
 

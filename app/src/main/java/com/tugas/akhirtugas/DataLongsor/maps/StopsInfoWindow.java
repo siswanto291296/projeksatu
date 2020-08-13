@@ -54,19 +54,21 @@ public class StopsInfoWindow implements GoogleMap.InfoWindowAdapter {
     public View getInfoContents(Marker marker) {
         DataLongsorItem stop = stopsMarkersInfo.get(marker);
         if (stop != null) {
-            view = context.getLayoutInflater().inflate(R.layout.pop_maps, null);
+            view = context.getLayoutInflater().inflate(R.layout.pop_map, null);
 
             TextView name = view.findViewById(R.id.txt_judul);
             TextView korban = view.findViewById(R.id.txt_korban);
             TextView tgl = view.findViewById(R.id.txt_tgl);
             TextView waktu = view.findViewById(R.id.txt_waktu);
             TextView alamat = view.findViewById(R.id.txt_alamat);
+            TextView penduduk = view.findViewById(R.id.txt_penduduk);
 
             name.setText("" + stop.getJenisBencana());
             korban.setText("" + stop.getKorban() + " Jiwa");
             tgl.setText("" + ubahTanggal2(stop.getTanggal()));
             waktu.setText("" + stop.getWaktu() + " WIB");
             alamat.setText("" + stop.getLokasi());
+            penduduk.setText("" + stop.getPenduduk() + " Jiwa");
         }
         return view;
     }

@@ -1,11 +1,14 @@
 package com.tugas.akhirtugas.DataLongsor.maps;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,6 +30,7 @@ import com.tugas.akhirtugas.model.longsor.ResponseLongsor;
 import com.tugas.akhirtugas.network.ApiService;
 import com.tugas.akhirtugas.network.RetroClient;
 import com.tugas.akhirtugas.session.Session;
+import com.tugas.akhirtugas.utils.Alert.BottomSheet;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +46,7 @@ import static com.tugas.akhirtugas.utils.Contans.DATA;
 
 //https://developers.google.com/maps/documentation/utilities/polylineutility
 //https://www.doogal.co.uk/polylines.php
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, com.tugas.akhirtugas.utils.Alert.OnClick {
     @BindView(R.id.btn_tambah)
     Button btnTambah;
     private GoogleMap mMap;
@@ -51,6 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Session sharedLogin;
     StopsInfoWindow infoWindow;
     HashMap<Marker, DataLongsorItem> stopsMarkersInfo = new HashMap<>();
+    BottomSheet bottomSheet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        bottomSheet = new BottomSheet(this::clicked, this);
+
         infoWindow = new StopsInfoWindow(stopsMarkersInfo, MapsActivity.this);
         UI();
     }
@@ -230,14 +238,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ).setColor(getResources().getColor(R.color.colorPrimaryDark));
 
         //jika dia sebagao admin
-        if (sharedLogin.getSPSudahLogin2()) {
+        //if (sharedLogin.getSPSudahLogin2()) {
             //onclik info windows
             mMap.setOnInfoWindowClickListener(marker -> {
                 DataLongsorItem data = stopsMarkersInfo.get(marker);
-                startActivity(new Intent(this, FormDataLongsor.class)
-                        .putExtra(DATA, data));
+                bottomSheet.openPopUp(sharedLogin, data);
+                /*startActivity(new Intent(this, FormDataLongsor.class)
+                        .putExtra(DATA, data));*/
+
             });
-        }
+        //}
     }
 
     private void getDataLongsor(String id) {
@@ -299,5 +309,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @OnClick(R.id.btn_tambah)
     public void onViewClicked() {
         startActivity(new Intent(MapsActivity.this, FormDataLongsor.class).putExtra("idKec", idKec));
+    }
+
+    @Override
+    public void clicked(Dialog dialog, DataLongsorItem dataLongsorItem) {
+        startActivity(new Intent(this, FormDataLongsor.class)
+                .putExtra(DATA, dataLongsorItem));
+        dialog.dismiss();
     }
 }
