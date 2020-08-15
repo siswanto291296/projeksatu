@@ -44,6 +44,23 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/v_16dp"
+            android:layout_marginRight="@dimen/v_16dp"
+            android:layout_marginBottom="@dimen/v_16dp"
+            android:hint="Jumlah Penduduk">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/penduduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,6 +136,48 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="10"
+                android:minLines="5"
+                android:scrollbars="vertical" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/v_16dp"
+            android:layout_marginRight="@dimen/v_16dp"
+            android:layout_marginBottom="@dimen/v_16dp"
+            android:hint="Deskripsi Kejadian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/kejadian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="10"
+                android:minLines="5"
+                android:scrollbars="vertical" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/v_16dp"
+            android:layout_marginRight="@dimen/v_16dp"
+            android:layout_marginBottom="@dimen/v_16dp"
+            android:hint="Cara Penanggulangan">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/penanggulangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
