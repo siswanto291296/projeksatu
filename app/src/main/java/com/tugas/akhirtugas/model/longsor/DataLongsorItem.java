@@ -7,20 +7,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class DataLongsorItem implements Parcelable {
 
+	@SerializedName("latitude")
+	private String latitude;
+
+	@SerializedName("korban")
+	private String korban;
+
 	@SerializedName("penduduk")
 	private String penduduk;
 
 	@SerializedName("lokasi")
 	private String lokasi;
 
-	@SerializedName("latitude")
-	private String latitude;
+	@SerializedName("bil_kejadian")
+	private int bilKejadian;
 
 	@SerializedName("waktu")
 	private String waktu;
-
-	@SerializedName("korban")
-	private String korban;
 
 	@SerializedName("kejadian")
 	private String kejadian;
@@ -34,11 +37,30 @@ public class DataLongsorItem implements Parcelable {
 	@SerializedName("tanggal")
 	private String tanggal;
 
+	@SerializedName("radius")
+	private int radius;
+
 	@SerializedName("longitude")
 	private String longitude;
 
 	@SerializedName("penanggulangan")
 	private String penanggulangan;
+
+	public void setLatitude(String latitude){
+		this.latitude = latitude;
+	}
+
+	public String getLatitude(){
+		return latitude;
+	}
+
+	public void setKorban(String korban){
+		this.korban = korban;
+	}
+
+	public String getKorban(){
+		return korban;
+	}
 
 	public void setPenduduk(String penduduk){
 		this.penduduk = penduduk;
@@ -56,12 +78,12 @@ public class DataLongsorItem implements Parcelable {
 		return lokasi;
 	}
 
-	public void setLatitude(String latitude){
-		this.latitude = latitude;
+	public void setBilKejadian(int bilKejadian){
+		this.bilKejadian = bilKejadian;
 	}
 
-	public String getLatitude(){
-		return latitude;
+	public int getBilKejadian(){
+		return bilKejadian;
 	}
 
 	public void setWaktu(String waktu){
@@ -70,14 +92,6 @@ public class DataLongsorItem implements Parcelable {
 
 	public String getWaktu(){
 		return waktu;
-	}
-
-	public void setKorban(String korban){
-		this.korban = korban;
-	}
-
-	public String getKorban(){
-		return korban;
 	}
 
 	public void setKejadian(String kejadian){
@@ -112,6 +126,14 @@ public class DataLongsorItem implements Parcelable {
 		return tanggal;
 	}
 
+	public void setRadius(int radius){
+		this.radius = radius;
+	}
+
+	public int getRadius(){
+		return radius;
+	}
+
 	public void setLongitude(String longitude){
 		this.longitude = longitude;
 	}
@@ -135,15 +157,17 @@ public class DataLongsorItem implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.latitude);
+		dest.writeString(this.korban);
 		dest.writeString(this.penduduk);
 		dest.writeString(this.lokasi);
-		dest.writeString(this.latitude);
+		dest.writeInt(this.bilKejadian);
 		dest.writeString(this.waktu);
-		dest.writeString(this.korban);
 		dest.writeString(this.kejadian);
 		dest.writeString(this.idBencana);
 		dest.writeString(this.jenisBencana);
 		dest.writeString(this.tanggal);
+		dest.writeInt(this.radius);
 		dest.writeString(this.longitude);
 		dest.writeString(this.penanggulangan);
 	}
@@ -152,15 +176,17 @@ public class DataLongsorItem implements Parcelable {
 	}
 
 	protected DataLongsorItem(Parcel in) {
+		this.latitude = in.readString();
+		this.korban = in.readString();
 		this.penduduk = in.readString();
 		this.lokasi = in.readString();
-		this.latitude = in.readString();
+		this.bilKejadian = in.readInt();
 		this.waktu = in.readString();
-		this.korban = in.readString();
 		this.kejadian = in.readString();
 		this.idBencana = in.readString();
 		this.jenisBencana = in.readString();
 		this.tanggal = in.readString();
+		this.radius = in.readInt();
 		this.longitude = in.readString();
 		this.penanggulangan = in.readString();
 	}

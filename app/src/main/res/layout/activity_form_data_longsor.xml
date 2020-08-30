@@ -132,6 +132,40 @@
             android:layout_marginLeft="@dimen/v_16dp"
             android:layout_marginRight="@dimen/v_16dp"
             android:layout_marginBottom="@dimen/v_16dp"
+            android:hint="Radius Kejadian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/radius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal|numberSigned" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/v_16dp"
+            android:layout_marginRight="@dimen/v_16dp"
+            android:layout_marginBottom="@dimen/v_16dp"
+            android:hint="Bilangan Kejadian">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal|numberSigned" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/v_16dp"
+            android:layout_marginRight="@dimen/v_16dp"
+            android:layout_marginBottom="@dimen/v_16dp"
             android:hint="Lokasi">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -69,6 +69,10 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
     TextInputEditText kejadian;
     @BindView(R.id.penanggulangan)
     TextInputEditText penanggulangan;
+    @BindView(R.id.radius)
+    TextInputEditText radius;
+    @BindView(R.id.bil)
+    TextInputEditText bil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,13 +122,16 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
                     update(jenisBencana.getText().toString(), changeDateServer(btnTgl.getText().toString()),
                             btnWaktu.getText().toString(), lokasi.getText().toString(), korban.getText().toString(),
                             latitude.getText().toString(), longitude.getText().toString(),
-                            penduduk.getText().toString(), kejadian.getText().toString(), penanggulangan.getText().toString());
+                            penduduk.getText().toString(), kejadian.getText().toString(),
+                            penanggulangan.getText().toString(), radius.getText().toString(),
+                            bil.getText().toString());
                 } else {
                     //created new news
                     created(jenisBencana.getText().toString(), changeDateServer(btnTgl.getText().toString()),
                             btnWaktu.getText().toString(), lokasi.getText().toString(), korban.getText().toString(),
                             latitude.getText().toString(), longitude.getText().toString(),
-                            penduduk.getText().toString(), kejadian.getText().toString(), penanggulangan.getText().toString());
+                            penduduk.getText().toString(), kejadian.getText().toString(), penanggulangan.getText().toString(),
+                            radius.getText().toString(), bil.getText().toString());
                 }
                 break;
         }
@@ -190,20 +197,20 @@ public class FormDataLongsor extends AppCompatActivity implements Callback<Respo
 
     private void created(String jenisBencana, String tanggal, String waktu, String lokasi,
                          String korban, String latitude, String longitude,
-                         String penduduk, String kejadian, String penanggulangan) {
+                         String penduduk, String kejadian, String penanggulangan, String radius, String bil) {
         ApiService service = RetroClient.getApiService();
         Call<ResponseCrud> call = service.createDataLongsor(idKec, jenisBencana, tanggal, waktu,
-                lokasi, korban, latitude, longitude, penduduk, kejadian, penanggulangan);
+                lokasi, korban, latitude, longitude, penduduk, kejadian, penanggulangan, radius, bil);
         call.enqueue(this);
     }
 
     private void update(String jenisBencana, String tanggal, String waktu, String lokasi,
                         String korban, String latitude, String longitude, String penduduk, String kejadian,
-                        String penanggulangan) {
+                        String penanggulangan, String radius, String bil) {
         ApiService service = RetroClient.getApiService();
         Call<ResponseCrud> call = service.updateDataLongsor(Integer.parseInt(data.getIdBencana()),
                 jenisBencana, tanggal, waktu, lokasi, korban, latitude, longitude, penduduk, kejadian,
-                penanggulangan);
+                penanggulangan, radius, bil);
         call.enqueue(this);
     }
 
